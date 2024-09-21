@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // CORS configuration
 const corsConfig = {
-  origin: 'http://10.10.10.20:3000', // Specify the frontend app's origin
+  origin: 'http://10.10.10.20', // Specify the frontend app's origin
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
   credentials: true // Correct key, allows credentials like cookies
 };
