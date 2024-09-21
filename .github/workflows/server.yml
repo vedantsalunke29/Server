@@ -1,6 +1,3 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Node.js CI
 
 on:
@@ -25,6 +22,9 @@ jobs:
           cache: 'npm'
       
       - run: npm install
+
+      - name: Install PM2
+        run: npm install -g pm2
       
       - name: Start Application with PM2
         env:
@@ -40,4 +40,7 @@ jobs:
           PORT_PY: ${{ secrets.PORT_PY }}
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
         run: |
-          pm2 restart BackendAPI || pm2 start backend/index.js --name BackendAPI --env MONGO_URI="${{ secrets.MONGO_URI }}" --env APP_PASS="${{ secrets.APP_PASS }}" --env CLOUDINARY_URL="${{ secrets.CLOUDINARY_URL }}" --env CLOUD_API_KEY="${{ secrets.CLOUD_API_KEY }}" --env CLOUD_API_SECRET="${{ secrets.CLOUD_API_SECRET }}" --env CLOUD_NAME="${{ secrets.CLOUD_NAME }}" --env JWT_SECRET="${{ secrets.JWT_SECRET }}" --env NODE_ENV="${{ secrets.NODE_ENV }}" --env PORT="${{ secrets.PORT }}" --env PORT_PY="${{ secrets.PORT_PY }}" --env USER_EMAIL="${{ secrets.USER_EMAIL }}"
+          pm2 restart BackendAPI || pm2 start ecosystem.config.js --env production
+
+      - name: Save PM2 process list
+        run: pm2 save
