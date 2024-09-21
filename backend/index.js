@@ -21,14 +21,15 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// CORS configuration
+// CORS configuration for LAN IP range
 const corsConfig = {
-  origin: 'http://10.10.10.20', // Specify the frontend app's origin
+  origin: [/^http:\/\/10\.10\.(8|9|10|11|12|13|14|15)\.\d{1,3}(:\d+)?$/, 'http://localhost:3000'], // Allow IPs in the range 10.10.8.x to 10.10.15.x
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
-  credentials: true // Correct key, allows credentials like cookies
+  credentials: true // Allows sending cookies with requests
 };
 
 app.use(cors(corsConfig));
+app.options('*', cors(corsConfig)); // Handle preflight requests
 
 // Other middleware
 app.use(cookieParser());
@@ -41,4 +42,4 @@ app.use(fileUpload({
 app.use('/api', userRoutes);
 
 // Start the server
-app.listen(port, () => console.log(`Server running on port: ${port}`));
+app.listen(port, '0.0.0.0', () => console.log(`Server running on port: ${port}`));
