@@ -40,4 +40,4 @@ jobs:
           PORT_PY: ${{ secrets.PORT_PY }}
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
         run: |
-          pm2 restart BackendAPI || pm2 start backend/index.js --name BackendAPI
+          pm2 restart BackendAPI || pm2 start backend/index.js --name BackendAPI --env MONGO_URI="${{ secrets.MONGO_URI }}" --env APP_PASS="${{ secrets.APP_PASS }}" --env CLOUDINARY_URL="${{ secrets.CLOUDINARY_URL }}" --env CLOUD_API_KEY="${{ secrets.CLOUD_API_KEY }}" --env CLOUD_API_SECRET="${{ secrets.CLOUD_API_SECRET }}" --env CLOUD_NAME="${{ secrets.CLOUD_NAME }}" --env JWT_SECRET="${{ secrets.JWT_SECRET }}" --env NODE_ENV="${{ secrets.NODE_ENV }}" --env PORT="${{ secrets.PORT }}" --env PORT_PY="${{ secrets.PORT_PY }}" --env USER_EMAIL="${{ secrets.USER_EMAIL }}"
