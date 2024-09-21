@@ -40,4 +40,4 @@ jobs:
           PORT_PY: ${{ secrets.PORT_PY }}
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
         run: |
-          pm2 restart BackendAPI || pm2 start index.js --name BackendAPI
+          pm2 restart BackendAPI || pm2 start backend/index.js --name BackendAPI
