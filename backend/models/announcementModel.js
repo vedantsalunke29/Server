@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const announcementSchema = mongoose.Schema({
     regIdNo: {
@@ -23,13 +23,12 @@ const announcementSchema = mongoose.Schema({
     link: {
         type: String
     },
-    img:
-    {
+    img: {
         type: Array,
         required: true,
     }
-})
+});
 
 const Announcement = mongoose.model("Announcement", announcementSchema);
 
-export default Announcement;
+module.exports = Announcement;

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     regIdNo: {
@@ -18,10 +18,8 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+}, { timestamps: true });
 
+const User = mongoose.model('User', userSchema);
 
-}, { timestamps: true })
-
-const User = mongoose.model("User", userSchema)
-
-export default User;
+module.exports = User;

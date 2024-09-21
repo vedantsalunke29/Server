@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const validatingUser = mongoose.Schema({
     regIdNo: {
@@ -13,6 +13,6 @@ const validatingUser = mongoose.Schema({
     },
 });
 
-const Validate = mongoose.model("Validate", validatingUser)
+const Validate = mongoose.model('Validate', validatingUser);
 
-export default Validate;
+module.exports = Validate;

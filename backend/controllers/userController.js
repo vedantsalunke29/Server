@@ -1,16 +1,17 @@
-import User from "../models/userModel.js";
-import Validate from "../models/validateModel.js";
-import userImage from "../models/userImageModel.js";
-import asyncHandler from "../middlewares/asyncHandler.js";
-import bcrypt from "bcryptjs"
-import generateToken from "../utils/generateToken.js"
-import Image from "../models/imageModel.js";
-import nodemailer from "nodemailer"
-import { uploadCloudinary, deleteCloudinary } from "../utils/cloudinary.js";
-import Events from "../models/eventModel.js";
-import Discuss from "../models/discussModel.js";
-import Note from "../models/notesModel.js";
-import Announcement from "../models/announcementModel.js";
+const User = require('../models/userModel');
+const Validate = require('../models/validateModel');
+const userImage = require('../models/userImageModel');
+const asyncHandler = require('../middlewares/asyncHandler');
+const bcrypt = require('bcryptjs');
+const generateToken = require('../utils/generateToken');
+const Image = require('../models/imageModel');
+const nodemailer = require('nodemailer');
+const { uploadCloudinary, deleteCloudinary } = require('../utils/cloudinary');
+const Events = require('../models/eventModel');
+const Discuss = require('../models/discussModel');
+const Note = require('../models/notesModel');
+const Announcement = require('../models/announcementModel');
+
 
 // Login SignUp Logout
 
@@ -987,4 +988,38 @@ const getAnnouncementById = asyncHandler(async (req, res) => {
 })
 
 
-export { createUser, signinUser, getImage, postImage, getCurrentUserProfile, sendEmail, resetPass, getUserImage, deleteUserImage, getProductById, postUserImg, getUserProfileImage, deleteUserProfileImage, updateUserName, uploadEventInfo, getEventInfo, getEventInfoById, getEventInfoByRegIdNo, deleteEvent, postContactMsg, buyRequestToOwner, postDiscussMsg, discussInfo, handleLike, deleteDiscussion, replyDiscussion, getReply, postNoteById, getNotesById, notesById, addAnnouncement, getAnnouncement, getAnnouncementById };
+module.exports = {
+    createUser,
+    signinUser,
+    getImage,
+    postImage,
+    getCurrentUserProfile,
+    sendEmail,
+    resetPass,
+    getUserImage,
+    deleteUserImage,
+    getProductById,
+    postUserImg,
+    getUserProfileImage,
+    deleteUserProfileImage,
+    updateUserName,
+    uploadEventInfo,
+    getEventInfo,
+    getEventInfoById,
+    getEventInfoByRegIdNo,
+    deleteEvent,
+    postContactMsg,
+    buyRequestToOwner,
+    postDiscussMsg,
+    discussInfo,
+    handleLike,
+    deleteDiscussion,
+    replyDiscussion,
+    getReply,
+    postNoteById,
+    getNotesById,
+    notesById,
+    addAnnouncement,
+    getAnnouncement,
+    getAnnouncementById
+};

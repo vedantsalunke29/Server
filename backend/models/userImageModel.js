@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const userImageSchema = mongoose.Schema({
     regIdNo: {
@@ -10,8 +10,8 @@ const userImageSchema = mongoose.Schema({
         type: String,
         required: true,
     }
-})
+});
 
-const userImage = mongoose.model("userImage", userImageSchema);
+const userImage = mongoose.model('userImage', userImageSchema);
 
-export default userImage;
+module.exports = userImage;

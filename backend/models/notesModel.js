@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const noteSchema = mongoose.Schema({
     regIdNo: {
@@ -30,9 +30,8 @@ const noteSchema = mongoose.Schema({
     addLi2: {
         type: Array,
     }
+});
 
-})
+const Note = mongoose.model('Note', noteSchema);
 
-const Note = mongoose.model("Note", noteSchema)
-
-export default Note;
+module.exports = Note;

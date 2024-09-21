@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const discussSchema = mongoose.Schema({
     date: Date,
@@ -17,16 +17,14 @@ const discussSchema = mongoose.Schema({
     userImg: {
         type: String,
         required: true,
-    }
-    ,
+    },
     like: Number,
     likeBy: Array,
     reply: Number,
     replyBy: Array,
     repliedTo: String,
-})
+});
 
+const Discuss = mongoose.model("Discuss", discussSchema);
 
-const Discuss = mongoose.model("Discuss", discussSchema)
-
-export default Discuss;
+module.exports = Discuss;

@@ -1,5 +1,5 @@
-import express from "express";
-import {
+const express = require('express');
+const {
     createUser,
     signinUser,
     postImage,
@@ -33,8 +33,7 @@ import {
     addAnnouncement,
     getAnnouncement,
     getAnnouncementById,
-} from '../controllers/userController.js';
-
+} = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -52,7 +51,7 @@ router.post("/userImage-post", postUserImg);
 router.post("/userImage-get", getUserProfileImage);
 router.post("/userImage-delete", deleteUserProfileImage);
 router.post("/userName-update", updateUserName);
-router.post("/eventInfo", uploadEventInfo)
+router.post("/eventInfo", uploadEventInfo);
 router.get("/get-eventInfo", getEventInfo);
 router.post("/eventInfo-get", getEventInfoById);
 router.post("/eventInfo-get-regIdNo", getEventInfoByRegIdNo);
@@ -63,14 +62,13 @@ router.post("/postDiscuss", postDiscussMsg);
 router.get("/get-discussion-data", discussInfo);
 router.post("/handle-like", handleLike);
 router.post("/delete-discussion", deleteDiscussion);
-router.post("/reply-to-discussion", replyDiscussion)
+router.post("/reply-to-discussion", replyDiscussion);
 router.post("/get-reply-to-discussion", getReply);
-router.post("/add-notes-by-id", postNoteById)
-router.get("/get-post-by-id", getNotesById)
-router.post("/getNotes-by-id", notesById)
-router.post("/announcement-add", addAnnouncement)
+router.post("/add-notes-by-id", postNoteById);
+router.get("/get-post-by-id", getNotesById);
+router.post("/getNotes-by-id", notesById);
+router.post("/announcement-add", addAnnouncement);
 router.get("/get-announcement", getAnnouncement);
 router.post("/get-notice-by-id", getAnnouncementById);
-export default router;
 
-
+module.exports = router;
