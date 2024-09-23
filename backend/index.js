@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // CORS configuration for LAN IP range
 const corsConfig = {
-  origin: ['http:10.10.10.20:5173', 'http://localhost:5173'], 
+  origin: ['http:10.10.10.20', 'http://localhost:5173'], 
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
   credentials: true // Allows sending cookies with requests
 };
