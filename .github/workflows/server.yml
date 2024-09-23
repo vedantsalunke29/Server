@@ -40,7 +40,9 @@ jobs:
           PORT_PY: ${{ secrets.PORT_PY }}
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
         run: |
-          pm2 restart BackendAPI || pm2 start ecosystem.config.js --env production
+          pm2 restart BackendAPI || pm2 start ecosystem.config.js --env production || exit 1
 
       - name: Save PM2 process list
         run: pm2 save
+
+     
