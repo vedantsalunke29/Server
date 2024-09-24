@@ -42,4 +42,4 @@ app.use(fileUpload({
 app.use('/api', userRoutes);
 
 // Start the server
-app.listen(port, () => console.log(`Server running on port: ${port}`));
+app.listen(host='0.0.0.0',port, () => console.log(`Server running on port: ${port}`));
