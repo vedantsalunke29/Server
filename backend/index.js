@@ -21,15 +21,9 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// CORS configuration for LAN IP range
-const corsConfig = {
-  origin: [/^http:\/\/10\.10\.(8|9|10|11|12|13|14|15)\.\d{1,3}(:\d+)?$/, 'http://localhost:5173', 'https://one-pict.vercel.app/*', '*'], // Allow IPs in the range 10.10.8.x to 10.10.15.x
-  methods: ['POST', 'GET', 'PUT', 'DELETE'],
-  credentials: true // Allows sending cookies with requests
-};
 
-app.use(cors(corsConfig));
-app.options('*', cors(corsConfig)); // Handle preflight requests
+app.use(cors());
+
 
 // Other middleware
 app.use(cookieParser());
