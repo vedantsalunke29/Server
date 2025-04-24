@@ -34,7 +34,27 @@ const createUser = asyncHandler(async (req, res) => {
             const newUser = new User({ regIdNo: regIdNo, name: name, email: email, password: hashedPassword })
             generateToken(res, newUser._id);
             await newUser.save();
-            
+            const transporter = nodemailer.createTransport({
+                service: "Gmail",
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false,
+                auth: {
+                    user: process.env.USER_EMAIL,
+                    pass: process.env.APP_PASS,
+                },
+            })
+
+            const mailOption = {
+                from: "One Pict",
+                to: userValid.email,
+                subject: "Verification Code for Sign Up",
+                text: `The 6-digit code to verify your email is ${otp}`
+            }
+
+            transporter.sendMail(mailOption, (error, info) => {
+                if (error) { res.status(500) }
+            })
             res.json("create");
         }
         else res.send("not");
